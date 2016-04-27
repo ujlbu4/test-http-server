@@ -1,0 +1,3 @@
+<environment environmentName = "qa">
+    <partnerEndPoint>http://localhost:4545</partnerEndPoint>
+</environment>
