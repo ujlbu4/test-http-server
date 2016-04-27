@@ -42,6 +42,7 @@ public class HttpRequestBuilder {
     public String getServerLocation() {
         return serverLocation;
     }
+
     /**
      * Set target server IP
      */
@@ -80,38 +81,44 @@ public class HttpRequestBuilder {
     /**
      * Reset request parameters
      */
-    public void reset(){
+    public void reset() {
         this.parameters = new ArrayList<NameValuePair>();
         this.appendURLString = "";
     }
+
     /**
      * Get parameters list
+     *
      * @return result - List NameValuePair
      */
     public List<NameValuePair> getParameters() {
         return Collections.unmodifiableList(parameters);
     }
+
     /**
      * Get single parameter
+     *
      * @param key - parameters key
      * @return result - (String) key value
      */
     public String getParameter(String key) {
         String result = "";
-        for(NameValuePair param : parameters){
+        for (NameValuePair param : parameters) {
             if (key.equals(param.getName())) {
                 result = param.getValue().toString();
             }
         }
         return result;
     }
+
     /**
      * Edit single parameter
-     * @param key - parameters key
+     *
+     * @param key   - parameters key
      * @param value - new value for selected key
      */
     public void editParameter(String key, String newValue) {
-        for(NameValuePair param : parameters){
+        for (NameValuePair param : parameters) {
             if (key.equals(param.getName())) {
                 param.setValue(newValue);
             }
@@ -120,7 +127,8 @@ public class HttpRequestBuilder {
     
     /**
      * Add single parameter to request
-     * @param name = key (String)
+     *
+     * @param name  = key (String)
      * @param value = value for key (String)
      */
     public void addParameter(String name, String value) {
@@ -129,14 +137,15 @@ public class HttpRequestBuilder {
     
     /**
      * Add parameters to request as list
+     *
      * @param parameters - List NameValuePair
      */
     public void addParameters(List<NameValuePair> parameters) {
-        for(NameValuePair param : parameters){
+        for (NameValuePair param : parameters) {
             this.parameters.add(param);
         }
     }
-    
+
 //    /**
 //     * Add parameters to request from request object
 //     * @param requestDTO {@link RequestDTO} - request DTO
@@ -162,7 +171,7 @@ public class HttpRequestBuilder {
         nameValuePairs.addAll(parameters);
         //Remove JSON tag parameter for GET request
         for (int i = 0; i < nameValuePairs.size(); i++) {
-            if (((org.apache.http.NameValuePair)nameValuePairs.get(i)).getName().equals("jsonBodyTypeX")) {
+            if (((org.apache.http.NameValuePair) nameValuePairs.get(i)).getName().equals("jsonBodyTypeX")) {
                 nameValuePairs.remove(i);
                 break;
             }
@@ -281,7 +290,7 @@ public class HttpRequestBuilder {
         nameValuePairs.addAll(parameters);
         //Remove JSON tag parameter for GET request
         for (int i = 0; i < nameValuePairs.size(); i++) {
-            if (((org.apache.http.NameValuePair)nameValuePairs.get(i)).getName().equals("jsonBodyTypeX")) {
+            if (((org.apache.http.NameValuePair) nameValuePairs.get(i)).getName().equals("jsonBodyTypeX")) {
                 nameValuePairs.remove(i);
                 break;
             }
@@ -301,6 +310,7 @@ public class HttpRequestBuilder {
     
     /**
      * Add sub-page to URL
+     *
      * @param appendString - additional page
      */
     public void appendURL(String appendString) {
@@ -313,6 +323,7 @@ public class HttpRequestBuilder {
     
     /**
      * Get sub-page to URL
+     *
      * @return appendString - additional page
      */
     public String getAppendURL() {
@@ -321,6 +332,7 @@ public class HttpRequestBuilder {
     
     /**
      * Reset sub-page to URL
+     *
      * @param appendString - additional page
      */
     public void resetAppendURL(String appendString) {

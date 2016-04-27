@@ -1,12 +1,12 @@
 package ru.inn.httpserver.system.storage;
 
+import ru.inn.httpserver.system.Debugger;
+import ru.inn.httpserver.system.enums.Routes;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import ru.inn.httpserver.system.Debugger;
-import ru.inn.httpserver.system.enums.Routes;
 
 public class Storage {
 
@@ -39,13 +39,13 @@ public class Storage {
 
     public void put(String user_id, String event, String value) {
         synchronized (query) {
-            query.put(user_id+event, value);
+            query.put(user_id + event, value);
         }
     }
 
     public void delete(String user_id, String event) {
         synchronized (query) {
-            if (query.containsKey(user_id+event)) {
+            if (query.containsKey(user_id + event)) {
                 query.remove(user_id + event);
             }
         }

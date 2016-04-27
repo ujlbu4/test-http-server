@@ -78,7 +78,7 @@ public class HttpClientEndpoint {
             }
         }
         debug.println("Building " + method.getString() + " Request[id: " + httpBuilder.getRequestId()
-                             + "] : " + httpRequest.getURI() + ", Headers:" + headers +
+                          + "] : " + httpRequest.getURI() + ", Headers:" + headers +
                           (method.equals(HttpTypes.GET) ? "" : ", Body:" + body));
 
 
@@ -103,7 +103,7 @@ public class HttpClientEndpoint {
             String responseBody = output.toString();
 
             debug.println("Receiving " + method.getString() + " Response[id: " + requestId
-                                 + "] : " + (responseBody.isEmpty() ? " " : responseBody +", ") +
+                              + "] : " + (responseBody.isEmpty() ? " " : responseBody + ", ") +
                               "Status code: " + closeableHttpResponse.getStatusLine().getStatusCode() +
                               ", Headers:" + closeableHttpResponse.getAllHeaders().toString());
 

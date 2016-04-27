@@ -1,14 +1,5 @@
 package ru.inn.httpserver.server;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletException;
-
-import java.io.IOException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-import java.util.*;
-
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.ProtocolException;
@@ -26,13 +17,20 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.protocol.HttpContext;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-
 import ru.inn.httpserver.system.Debugger;
 import ru.inn.httpserver.system.NameValuePair;
 import ru.inn.httpserver.system.enums.Routes;
 import ru.inn.httpserver.system.storage.Storage;
 import ru.inn.httpserver.system.transport.HttpClientEndpoint;
 import ru.inn.httpserver.system.transport.HttpTypes;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.*;
 
 public class AbstractMockHandler extends AbstractHandler {
 
@@ -99,7 +97,7 @@ public class AbstractMockHandler extends AbstractHandler {
             case "GET":
                 response.setStatus(HttpServletResponse.SC_OK);
                 if (isParametersCorrect(request)) {
-                    String result = Storage.getInstance().getByParameter(request.getParameter("user_id")+request.getParameter("event"));
+                    String result = Storage.getInstance().getByParameter(request.getParameter("user_id") + request.getParameter("event"));
                     response.getWriter().println(result);
 
                 } else {
@@ -178,10 +176,10 @@ public class AbstractMockHandler extends AbstractHandler {
         }
     }
 
-    public void executeRequest(List<NameValuePair> headers, List<NameValuePair> body) throws Exception{
+    public void executeRequest(List<NameValuePair> headers, List<NameValuePair> body) throws Exception {
 
         SSLContextBuilder builder = new SSLContextBuilder();
-        builder.loadTrustMaterial(null, new TrustStrategy(){
+        builder.loadTrustMaterial(null, new TrustStrategy() {
             @Override
             public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
                 return true;
@@ -189,7 +187,7 @@ public class AbstractMockHandler extends AbstractHandler {
         });
         SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(builder.build(), SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
             .register("https", sslsf)
             .register("http", new PlainConnectionSocketFactory())
             .build();

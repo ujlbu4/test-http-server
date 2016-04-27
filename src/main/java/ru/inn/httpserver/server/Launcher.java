@@ -1,7 +1,6 @@
 package ru.inn.httpserver.server;
 
 import org.eclipse.jetty.server.Server;
-
 import ru.inn.httpserver.system.Debugger;
 import ru.inn.httpserver.system.config.Options;
 import ru.inn.httpserver.system.storage.Storage;

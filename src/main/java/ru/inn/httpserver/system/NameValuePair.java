@@ -5,21 +5,21 @@ import org.apache.http.util.LangUtils;
 import java.io.Serializable;
 
 public class NameValuePair implements Serializable, org.apache.http.NameValuePair {
-	//FIXME: implements shitty apache class, that was changed to interface in 4.1. Rename it later
+    //FIXME: implements shitty apache class, that was changed to interface in 4.1. Rename it later
 
     // ----------------------------------------------------------- Constructors
 
     /**
      * Default constructor.
-     * 
      */
     public NameValuePair() {
-        this (null, null);
+        this(null, null);
     }
 
     /**
      * Constructor.
-     * @param name The name.
+     *
+     * @param name  The name.
      * @param value The value.
      */
     public NameValuePair(String name, String value) {
@@ -86,6 +86,7 @@ public class NameValuePair implements Serializable, org.apache.http.NameValuePai
 
     /**
      * Get a String representation of this pair.
+     *
      * @return A string representation.
      */
     public String toString() {
@@ -98,7 +99,7 @@ public class NameValuePair implements Serializable, org.apache.http.NameValuePai
         if (object instanceof NameValuePair) {
             NameValuePair that = (NameValuePair) object;
             return LangUtils.equals(this.name, that.name)
-                  && LangUtils.equals(this.value, that.value);
+                && LangUtils.equals(this.value, that.value);
         } else {
             return false;
         }
